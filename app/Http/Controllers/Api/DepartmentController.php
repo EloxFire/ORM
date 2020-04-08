@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Department;
-use Illuminate\Http\Request;
+//use Illuminate\Http\Request;
 
-class DepartmentController extends Controller
+use App\Http\Requests\dept as Request;
+
+class DepartmentAPIController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +16,7 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        return Department::find('d001');
+        return Department::paginate(5)->toJson();
     }
 
     /**
@@ -25,7 +27,9 @@ class DepartmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Department::create($request->toArray());
+        $e = Department::find($request->emp_no);
+        return $e;
     }
 
     /**
@@ -36,7 +40,7 @@ class DepartmentController extends Controller
      */
     public function show(Department $department)
     {
-        //
+        return $department;
     }
 
     /**
@@ -48,7 +52,12 @@ class DepartmentController extends Controller
      */
     public function update(Request $request, Department $department)
     {
-        //
+        $no = $request->dept_no;
+        Department::where('dept_no', $no)->update([
+          'dept_no' => $request->dept_no,
+          'dept_name' => $request->dept_name,
+        ]);
+    return $department;
     }
 
     /**
@@ -59,6 +68,8 @@ class DepartmentController extends Controller
      */
     public function destroy(Department $department)
     {
-        //
+        $e = $department;
+        $department->delete();
+        return $e->toJson();
     }
 }

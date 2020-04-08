@@ -18,3 +18,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::apiResource('employees', 'Api\EmployeeController');
+Route::apiResource('department', 'Api\DepartmentController');
+Route::apiResource('employees.titles', 'Api\TitleController')->except('delete');
+Route::get('employees/{employee}/title', 'Api\TitleController@current');

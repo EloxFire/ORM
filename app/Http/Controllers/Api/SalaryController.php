@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
-use App\Department;
+use App\Http\Controllers\Controller;
+use App\Salary;
 use Illuminate\Http\Request;
 
-class DepartmentController extends Controller
+class SalaryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,7 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        return Department::find('d001');
+        //
     }
 
     /**
@@ -31,10 +32,10 @@ class DepartmentController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Department  $department
+     * @param  \App\Salary  $salary
      * @return \Illuminate\Http\Response
      */
-    public function show(Department $department)
+    public function show(Salary $salary)
     {
         //
     }
@@ -43,10 +44,10 @@ class DepartmentController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Department  $department
+     * @param  \App\Salary  $salary
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Department $department)
+    public function update(Request $request, Salary $salary)
     {
         //
     }
@@ -54,10 +55,10 @@ class DepartmentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Department  $department
+     * @param  \App\Salary  $salary
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Department $department)
+    public function destroy(Salary $salary)
     {
         //
     }
